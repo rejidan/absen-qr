@@ -1,12 +1,13 @@
-// API Configuration
+// API Configuration for Fullstack App
 const getApiBaseUrl = () => {
-  // Check if we're in production (Vercel)
+  // In fullstack architecture, API is served from the same origin
   if (import.meta.env.PROD) {
-    return import.meta.env.VITE_API_BASE_URL_PROD || 'https://absensi-siswa-backend.vercel.app/api'
+    // Production: API served from same domain
+    return '/api'
   }
   
-  // Development environment
-  return import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000/api'
+  // Development: Use Vite proxy to backend server
+  return '/api'
 }
 
 export const API_BASE_URL = getApiBaseUrl()
